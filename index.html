@@ -14,7 +14,7 @@
             justify-content: center;
             background-color: #ffebf0;
             font-family: sans-serif;
-            overflow: hidden; /* Important: keeps the button from creating scrollbars */
+            overflow: hidden;
             text-align: center;
         }
         #container { padding: 20px; width: 100%; max-width: 400px; }
@@ -40,8 +40,9 @@
         #noBtn { 
             background-color: #adb5bd; 
             color: white; 
-            position: fixed; /* Changed to fixed to ensure it can jump anywhere */
+            position: fixed; 
             transition: 0.1s; 
+            left: 55%; /* Initial position */
         }
         img { width: 200px; border-radius: 15px; margin-bottom: 10px; }
     </style>
@@ -49,13 +50,11 @@
 <body>
 
     <div id="container">
-        <div id="content">
-            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzJnc3B1c3doYW1paml0dWZxeW45ZTJ0MDNtY2xpMzhkb3YwZzJ6byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vL8jVjKkqbVh2qdFj0/giphy.gif" alt="Cute hearts">
-            <h1>Dhana, will you be my Valentine?</h1>
-            <div class="buttons">
-                <button id="yesBtn" onclick="celebrate()">Yes</button>
-                <button id="noBtn" onmouseover="moveButton()" ontouchstart="moveButton()">No</button>
-            </div>
+        <img src="https://media.giphy.com/media/v4aDR0r6W5iXm/giphy.gif" alt="Cute hearts">
+        <h1>Dhana, will you be my Valentine?</h1>
+        <div class="buttons">
+            <button id="yesBtn" onclick="celebrate()">Yes</button>
+            <button id="noBtn" onmouseover="moveButton()" ontouchstart="moveButton()">No</button>
         </div>
     </div>
 
@@ -66,20 +65,16 @@
             const noBtn = document.getElementById('noBtn');
             const yesBtn = document.getElementById('yesBtn');
 
-            // Calculate safe boundaries
-            const padding = 20;
+            const padding = 50;
             const maxWidth = window.innerWidth - noBtn.offsetWidth - padding;
             const maxHeight = window.innerHeight - noBtn.offsetHeight - padding;
 
-            // Generate random coordinates
             const randomX = Math.max(padding, Math.floor(Math.random() * maxWidth));
             const randomY = Math.max(padding, Math.floor(Math.random() * maxHeight));
 
-            // Apply new position
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
 
-            // Make the Yes button grow
             yesSize += 0.3;
             yesBtn.style.transform = `scale(${yesSize})`;
         }
@@ -87,7 +82,7 @@
         function celebrate() {
             document.getElementById('container').innerHTML = `
                 <h1 style="font-size: 3rem;">YAY! 🥰</h1>
-                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExejd2YWdzc2FrcHlhMnVsZGJyOGtkeDBnZHhsd2Ezd2ExcmVvZmlhZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" style="width: 280px;">
+                <img src="https://media.giphy.com/media/l41lTfO52I7R10Fm8/giphy.gif" style="width: 280px;">
                 <p style="font-size: 1.5rem; color: #e91e63; font-weight: bold; margin-top: 20px;">I knew you'd say yes!</p>
             `;
         }
